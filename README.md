@@ -4,7 +4,7 @@ Welcome to the **LiveQuery GPT-4** project! 🎉 This is a simple chatbot powere
 
 ## Conversation Example
 ### UI
-![Screenshot](./screenshots/screenshot.png)
+![Screenshot](./screenshots/screenshot_bright.png)
 ### LangChain reasoning for the same conversation
 ![Screenshot](./screenshots/LangChain.png)
 

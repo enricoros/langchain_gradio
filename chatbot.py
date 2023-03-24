@@ -18,7 +18,7 @@ def get_response(chatbot, api_key, selected_model, user_input, conversation_hist
     response = chatbot.agent.run(user_input).strip()
 
     # Iterate through messages in ChatMessageHistory and format the output
-    updated_conversation = '<div style="background-color: hsl(30, 100%, 30%); color: white; padding: 5px; margin-bottom: 10px; text-align: center; font-size: 1.5em;">Chat History</div>'
+    updated_conversation = '<div style="background-color: #1677FF; color: white; padding: 5px; margin-bottom: 10px; text-align: center; font-size: 1.5em;">Chat History</div>'
     for i, message in enumerate(chatbot.memory.chat_memory.messages):
         if isinstance(message, HumanMessage):
             prefix = "User: "
@@ -64,6 +64,13 @@ def main():
         user_input,
     ]
 
+    theme = gr.themes.Soft(
+        primary_hue=gr.themes.colors.blue,
+        neutral_hue=gr.themes.colors.zinc,
+        radius_size=gr.themes.utils.radius_none,
+        font=gr.themes.utils.GoogleFont("Inter")
+    )
+
     iface = gr.Interface(
         fn=partial(get_response, chatbot),
         inputs=inputs,
@@ -71,6 +78,7 @@ def main():
         title="LiveQuery GPT-4",
         description="A simple chatbot using GPT-4 and Gradio with conversation history",
         allow_flagging=False,
+        theme=theme,
     )
 
     iface.launch()
